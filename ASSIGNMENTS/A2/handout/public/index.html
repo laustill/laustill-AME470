@@ -9,7 +9,23 @@
           var url = "./eval?a=" + a;
           loadFile(url, function (d) { alert(answer) })
       }
-  //  you can use loadFile()
+
+
+      function changeRSSSrc()
+      {
+          var feedURL = prompt("Enter your RSS feed URL:");
+          var url = "./getFeedData?url=" + feedURL;
+          loadFile(url, function (resData) {
+              var markup = resData;
+              $("#theList").html(markup);
+
+          })
+
+
+      }
+
+
+      //  you can use loadFile()
 }
   </script>
 

@@ -6,16 +6,25 @@ var methodOverride = require('method-override');
 var hostname = process.env.HOSTNAME || 'localhost';
 var port = 1234;
 
+var Client = require('node-rest-client').Client
+
 app.get("/", function (req, res) {
     res.redirect("index.html");
 });
-
+app.get("/getFeedData", function (req, res) {
+    var url = req.query.url;
+    var client = new Client();
+    client.get(url, function (data, response) {
+        console.log(data);
+        res.ed(JSON.stringify(data));
+    });
+})
 app.get("/eval", function (req, res) {
- /* var eq = req.query.eq;
+  var eq = req.query.eq;
 
   var r = eq + " = " + eval(eq) + "\n";
-   res.writeHead(200, {'Content-Type': 'text/plain'}); // send response header
-   */
+   res.writeHead(200, {'Content-Type': 'text/plain'});
+ 
     res.send(result.toString());
 });
 
