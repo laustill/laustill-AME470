@@ -4,7 +4,11 @@
   <script src='jquery-3.3.1.min.js'></script>
   <script>
       function sendToServer() {
-          alert("Hello");
+          var url = "./eval?eq=" + encodeURIComponent($('#eq').val());
+          
+          loadFile(url, function (resData) {
+              ("#result").html("<h1>" + resData + "</h1>");
+          }
 }
   </script>
 
@@ -12,7 +16,6 @@
 
 <body>
 	<h1> Eval </h1>
-    <input id='inpA' type= 'text' />
   <textarea id='eq'></textarea>
   <button onclick='sendToServer()'> Evaluate </button>
   <div id='result'> </div>
