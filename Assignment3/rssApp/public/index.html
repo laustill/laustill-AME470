@@ -88,13 +88,13 @@
     var markup = "";
     var thumbnail = data.artworkUrl100 || "";
       var name = data.name || "";
-      var artist = data.artist|| "";
+      var artist = data.artistName|| "";
     var link = data.url || "";
     console.log(data);
 
     markup += "<img src='" + thumbnail + "'>";
       markup += "<a target='_blank' href='" + link + "'><h1>" + name + "</h1></a>";
-      markup += "<h2>" + artist + "</h2>";
+      markup += "<p>" + artist + "</p>";
     $("#theDetails").html(markup);
     //document.getElementById("theDetails").innerHTML = markup;
   }
