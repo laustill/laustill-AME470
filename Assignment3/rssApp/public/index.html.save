@@ -6,12 +6,8 @@
   #theList button{
       border: 0px;
       padding: 0px;
-      min-width: 249px;
-      white-space: nowrap;
+      min-width: 100%;
       box-shadow: 0px 0px 1px;
-      font-family: sans-serif;
-      font-style: italic;
-      background-color: darkcyan;
   }
   #theList button h1,
   #theList button h2
@@ -43,7 +39,7 @@
       float:left;
       width: 250px;
       min-height: 100%;
-      background: #867fde;
+      background: gray;
     } 
     #theDetails{
       float:right;
@@ -51,8 +47,6 @@
       min-height: 100%;
       background: lightgray;
       text-align:center;
-      padding: 70px 0;
-      
     }
   </style>
   <script>
@@ -69,7 +63,6 @@
   {
     var feedURL = prompt("Enter your RSS feed URL:");
     var url = "./getFeedData?url=" + feedURL;
-
     loadRSS(url);
   }
 
@@ -101,13 +94,12 @@
 
     markup += "<img src='" + thumbnail + "'>";
       markup += "<a target='_blank' href='" + link + "'><h1>" + name + "</h1></a>";
-      markup += "<h2>" + artist + "</h2>";
+      markup += "<p>" + artist + "</p>";
 
     $("#theDetails").html(markup);
     //document.getElementById("theDetails").innerHTML = markup;
   }
   </script>
-  <script> loadRSS("./getFeedData?url=" + window.location.hash.replace("#",""));</script>
 
 </head>
 
