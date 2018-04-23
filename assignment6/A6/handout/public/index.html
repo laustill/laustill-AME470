@@ -6,14 +6,19 @@
   <script src='ac.js'></script>
   <link rel="stylesheet" type="text/css" href="ac.css">
   <style>
+.hiddeninall{
+	display: none;
+}
 @media (min-width: 500px){
 	#theDetails{
 	width: 250px;
+	$(#theDetails").addClass("hiddeninall");
 	}
 }
 @media (max-width: 500px){
 	#theDetails{
 	width: 100%;
+	$("#theDetails").addClass("hiddeninall");
 	}
 }
 
