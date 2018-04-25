@@ -45,7 +45,7 @@ app.post('/uploadImage', function(req, res){
     var s3Path = '/' + intname;
     var buf = new Buffer(req.body.data.replace(/^data:image\/\w+;base64,/, ""),'base64');
     var params = {
-        Bucket:'landonbucket',
+        Bucket:'laustill-ame4702018',
         ACL:'public-read',
         Key:intname,
         Body: buf,
@@ -66,7 +66,7 @@ app.post('/uploadFile', function(req, res){
     
     fs.readFile(tmpPath, function (err, data) {
         var params = {
-            Bucket:'landonbucket',
+            Bucket:'laustill-ame4702018',
             ACL:'public-read',
             Key:intname,
             Body: data,
