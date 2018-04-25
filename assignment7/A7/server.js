@@ -1,3 +1,7 @@
+
+
+
+
 //bucket
 var fs = require('fs');
 var AWS = require('aws-sdk');
@@ -41,7 +45,7 @@ app.post('/uploadImage', function(req, res){
     var s3Path = '/' + intname;
     var buf = new Buffer(req.body.data.replace(/^data:image\/\w+;base64,/, ""),'base64');
     var params = {
-        Bucket:'ame4702018',
+        Bucket:'laustill-ame4702018',
         ACL:'public-read',
         Key:intname,
         Body: buf,
