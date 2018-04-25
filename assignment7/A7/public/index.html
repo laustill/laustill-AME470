@@ -224,6 +224,17 @@ body{
         start();
     })
   }
+  function addBucket()
+  {
+    var feedURL = prompt("Enter new image URL:");
+    var url = "https://s3.amazonaws.com/laustill-ame4702018/" + fileInput;
+    url += "&date=" + new Date().getTime();
+    url += "&name=Untitled";
+    url += "&id=test" + new Date().getTime();
+    loadFile(url, function (resData) {
+        start();
+    })
+   }
 
 var currSelection;
 
@@ -392,7 +403,7 @@ var currSelection;
     <img style='height: 200px;display: block;width: auto;' id='preview'> 
 <div id='allImagesWrapper'>
 	<h1> Image Lib</h1>
-  <button id='editButton' onclick='addImgSrc()'> Add</button>
+  <button id='editButton' onclick='addBucket()'> Add</button>
   <div id='theImageList'></div>
 </div>
 <div id='theDetails'></div>
