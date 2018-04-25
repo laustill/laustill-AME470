@@ -104,6 +104,8 @@ app.get("/addImg", function (req, res) {
 });
 
 
+
+
 app.get("/renameImg", function (req, res) {
     var data = req.query;
     var newName = data.name;
