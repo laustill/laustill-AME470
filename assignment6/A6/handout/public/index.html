@@ -9,14 +9,25 @@
 .hiddeninall{
 	display: none;
 }
-@media (max-width: 500px){
-	$("$theImageList").addClass("hiddeninall");}
+@media (max-width:550px){
+#allImagesWrapper{
+	display:none
 }
-@media (min-width: 992px){
+#theDetails{
+	margin-left: 0px;
+	min-width: 100%;
+	min-height: 33%;
+	width: calc(100% - 500px);
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	background-size: contain;
+}
+}
+@media (min-width: 550px){
 	#theDetails{
 	width: 100%;
-	$("$allImagesWrapper").removeClass("hiddeninall");
-	}
+	margin-left: 250px;
 }
 
 
@@ -121,7 +132,7 @@ body{
       background-repeat: no-repeat;
       background-position: 50%;
       background-size: contain;
-          margin-left: 250px;
+
     }
   </style>
   <script>
