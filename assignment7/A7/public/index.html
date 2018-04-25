@@ -153,7 +153,7 @@ body{
           xhr.onreadystatechange = function (e) {
               if (xhr.readyState != 4) { return; }
               // callback logic
-              addBucket(fileInput)
+          addBucket(fileInput)
           };
           xhr.open("POST", "/uploadFile", true);
           xhr.send(fd);
@@ -226,7 +226,7 @@ body{
   }
   function addBucket(fileInput)
   {
-    var url = "https://s3.amazonaws.com/laustill-ame4702018/" + fileInput;
+    var url = "./addImg?url="+"https://s3.amazonaws.com/laustill-ame4702018/" + fileInput;
     url += "&date=" + new Date().getTime();
     url += "&name=Untitled";
     url += "&id=test" + new Date().getTime();
