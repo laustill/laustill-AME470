@@ -6,7 +6,7 @@
   <script src='ac.js'></script>
   <link rel="stylesheet" type="text/css" href="ac.css">
   <style>
-
+      
 @media (max-width:550px){
 #allImagesWrapper{
 	display:none
@@ -21,117 +21,146 @@
 	    background-position: 50%;
 	    background-size: contain;
     }
+        .hiddeninall{
+            display:block
+        }
+        .hiddeninsmall{
+            display:none
+        }
+ 
 }
-@media (min-width: 550px){
-	#theDetails{
-	width: 100%;
-	margin-left: 250px;
-}
+      @media (min-width: 550px) {
+          #theDetails {
+              width: 100%;
+              margin-left: 250px;
+          }
+           .hiddeninall
+          {
+          display: none;
+          }
+           .hiddeninsmall 
+          {
+          display: block;
+          }
+     }
 
 
 
-#theInspector input[type=range]{
-    width: 65%;
-    display: inline-block;
-}
-#theInspector label{
-    width: 30%;
-    display: inline-block;
-    text-align: right;
-}
-body{
-  margin: 0px;
-}
-#theImageList .item button h1{
-    margin-left: 105px;
-}
-.item button .thumb{
-      width: 100px;
-    height: 100px;
-    float: left;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    margin-right: 5px;
-}
-  .item.active,
-  button.active,
-  .item.active button{
-    background:gold;
-  }
-  .item{
-    background:white;
-  }
-  .item,
-  #theList button{
-      border: 0px;
-      padding: 0px;
-      min-width: 100%;
-      box-shadow: 0px 0px 1px;
-      border:none;
-  }
-  button{
-    border:none;
-  }
-  #theImageList button h1,
-  #theImageList button h2,
-  #theList button h1,
-  #theList button h2
-  {
-    padding: 0px;
-    margin: 0px;
-    font-size: 20px;
-    line-height: 20px;
-    margin-bottom: 5px;
-    text-align: left;
-  }
-  #theList button h2
-  {
-    font-size: 15px;
-  }
+          #theInspector input[type=range] {
+              width: 65%;
+              display: inline-block;
+          }
 
-  #theList button img{
-      height: 100px;
-      width: 100px;
-      float: left;
-      margin-right: 5px;
-  }
-    #editButton{
-      float: right;
-      margin-top: -50px;
-      margin-right: 5px;
-    }
-    #allImagesWrapper{
-      float:left;
-      width: 250px;
-      min-height: 100%;
-      background: gray;
-    } 
-    #theInspector{
-      float:right;
-      width: 250px;
-      min-height: 100%;
-      background: white;
-      top: 0px;
-    position: absolute;
-    right: 0px;
-    } 
-    #rssBox{
-      float:left;
-      width: 250px;
-      min-height: 100%;
-      background: lightgray;
-    } 
-    #theDetails{
-      width: calc(100% - 500px);
-      min-height: 100%;
-      background: lightgray;
-      text-align:center;
-      background-repeat: no-repeat;
-      background-position: 50%;
-      background-size: contain;
+          #theInspector label {
+              width: 30%;
+              display: inline-block;
+              text-align: right;
+          }
 
-    }
+          body {
+              margin: 0px;
+          }
+
+          #theImageList .item button h1 {
+              margin-left: 105px;
+          }
+
+          .item button .thumb {
+              width: 100px;
+              height: 100px;
+              float: left;
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: 50%;
+              margin-right: 5px;
+          }
+
+          .item.active,
+          button.active,
+          .item.active button {
+              background: gold;
+          }
+
+          .item {
+              background: white;
+          }
+
+          .item,
+          #theList button {
+              border: 0px;
+              padding: 0px;
+              min-width: 100%;
+              box-shadow: 0px 0px 1px;
+              border: none;
+          }
+
+          button {
+              border: none;
+          }
+
+          #theImageList button h1,
+          #theImageList button h2,
+          #theList button h1,
+          #theList button h2 {
+              padding: 0px;
+              margin: 0px;
+              font-size: 20px;
+              line-height: 20px;
+              margin-bottom: 5px;
+              text-align: left;
+          }
+
+          #theList button h2 {
+              font-size: 15px;
+          }
+
+          #theList button img {
+              height: 100px;
+              width: 100px;
+              float: left;
+              margin-right: 5px;
+          }
+
+          #editButton {
+              float: right;
+              margin-top: -50px;
+              margin-right: 5px;
+          }
+
+          #allImagesWrapper {
+              float: left;
+              width: 250px;
+              min-height: 100%;
+              background: gray;
+          }
+
+          #theInspector {
+              float: right;
+              width: 250px;
+              min-height: 100%;
+              background: white;
+              top: 0px;
+              position: absolute;
+              right: 0px;
+          }
+
+          #rssBox {
+              float: left;
+              width: 250px;
+              min-height: 100%;
+              background: lightgray;
+          }
+
+          #theDetails {
+              width: calc(100% - 500px);
+              min-height: 100%;
+              background: lightgray;
+              text-align: center;
+              background-repeat: no-repeat;
+              background-position: 50%;
+              background-size: contain;
+          }
+      }
   </style>
   <script>
   function renameClicked(n){
@@ -214,7 +243,9 @@ var currSelection;
     document.getElementById("theDetails").style.backgroundImage = "url(" + imgURL + ")";
    
     $("#theImageList .item").removeClass("active");
-    $("#theImageList .item:nth-of-type(" + (n+1) + ")").addClass("active");
+      $("#theImageList .item:nth-of-type(" + (n + 1) + ")").addClass("active");
+      $("#allImagesWrapper").addClass("hiddeninsmall");
+      $("#theInspector").addClass("hiddeninsmall");
   }
 
   function start()
@@ -264,7 +295,8 @@ var currSelection;
   function itemSelected(n)
   {
     $("#theList button").removeClass("active");
-    $("#theList button:nth-of-type(" + (n+1) + ")").addClass("active");
+      $("#theList button:nth-of-type(" + (n + 1) + ")").addClass("active");
+      $("#theInspector").addClass("hiddeninsmall");
     var data = currRSSData[n];
     var markup = "";
     var thumbnail = data.artworkUrl100 || "";
@@ -276,7 +308,8 @@ var currSelection;
     markup += "<a target='_blank' href='" + link + "'><h1>" + name + "</h1></a>";
 
 
-    $("#theDetails").html(markup);
+      $("#theDetails").html(markup);
+      $("theDetails").removeClass("hiddeninall");
     //document.getElementById("theDetails").innerHTML = markup;
   }
 
@@ -359,6 +392,19 @@ var currSelection;
         loadFile(url, function(resData){
         });
   }
+
+
+      function back() {
+          $("#theDetails").addClass("hiddeninsmall");
+          $("#allImagesWrapper").removeClass("hiddeninsmall");
+          $("#theInspector").addClass("hiddeninsmall")
+
+      }
+
+      function list() {
+          $("#theDetails").removeClass("hiddeninsmall");
+          $("#theInspector").addClass("hiddeninsmall");
+      }
   </script>
 
 </head>
@@ -369,6 +415,7 @@ var currSelection;
   <div id='theImageList'></div>
 </div>
 <div id='theDetails'></div>
+    <button onclick='back()' class='hiddeninall'></button>
 <div id='theInspector'>
   <br>
   <label for='blur'> Blur </label>
