@@ -6,49 +6,47 @@
     <script src='ac.js'></script>
     <link rel="stylesheet" type="text/css" href="ac.css">
     <style>
-        .hiddeninall {
-            display: none;
-        }
-
-        @media (min-width: 500px) { /* big */
-            #allImagesWrapper, #theInspector {
-                width: 250px;
-                max-height: 100%;
-                overflow: scroll;
-            }
-
-            .hiddeninSmall {
-                display: block;
-            }
-
-            .hiddeninBig {
-                display: none;
+        @media (max-width:550px) {
+            #allImagesWrapper {
+                display: none
             }
 
             #theDetails {
+                margin-left: 0px;
+                min-width: 100%;
+                min-height: 33%;
                 width: calc(100% - 500px);
+                text-align: center;
+                background-repeat: no-repeat;
+                background-position: 50%;
+                background-size: contain;
+            }
+
+            .hiddeninall {
+                display: block
+            }
+
+            .hiddeninsmall {
+                display: none
+            }
+        }
+
+        @media (min-width: 550px) {
+            #theDetails {
+                width: 100%;
                 margin-left: 250px;
             }
-        }
 
-        @media (max-width: 500px) { /* small */
-            #allImagesWrapper, #theInspector {
-                width: 100%;
-            }
-
-            .hiddeninSmall {
+            .hiddeninall {
                 display: none;
             }
 
-            .hiddeninBig {
+            .hiddeninsmall {
                 display: block;
-                margin: 10px;
-            }
-
-            #theDetails {
-                width: 100%;
             }
         }
+
+
 
         #theInspector input[type=range] {
             width: 65%;
@@ -133,7 +131,7 @@
 
         #allImagesWrapper {
             float: left;
-            /*      width: 250px;*/
+            width: 250px;
             min-height: 100%;
             background: gray;
         }
@@ -156,6 +154,7 @@
         }
 
         #theDetails {
+            width: calc(100% - 500px);
             min-height: 100%;
             background: lightgray;
             text-align: center;
@@ -163,25 +162,10 @@
             background-position: 50%;
             background-size: contain;
         }
+
+        }
     </style>
     <script>
-        function goBackToMain() {
-            $("#theDetails").addClass("hiddeninSmall");//correct
-            $("#allImagesWrapper").removeClass("hiddeninSmall");//correct
-            $("#theInspector").addClass("hiddeninSmall");
-            // setTimeout(function(){$("#theFeedList .item").removeClass("active")}, 1000);
-        }
-        function goBackToList() {
-            $("#theDetails").removeClass("hiddeninSmall");
-            $("#theInspector").removeClass("hiddeninSmall");
-            //      $("#theDetails").removeClass("hiddeninall");
-            //      $("#theInspector").removeClass("hiddeninall");
-
-            //    $("#theDetails").addClass("hiddeninall");
-            //old code
-            //    $("#rssBox").removeClass("hiddeninSmall");
-            setTimeout(function () { $("#theList button").removeClass("active") }, 1000);
-        }
         function renameClicked(n) {
             var currName = currRSSFeedList[n].name;
             var id = currRSSFeedList[n].id;
@@ -195,6 +179,7 @@
                 });
             }
         }
+
         function deleteClicked(n) {
             var id = currRSSFeedList[n].id;
             var x = confirm("Delete Image?");
@@ -205,6 +190,10 @@
                 });
             }
         }
+
+
+
+
         function getDataFromServer() {
             //var url = "./eval?eq=34-4*45";
             var url = "https://rss.itunes.apple.com/api/v1/us/apple-music/hot-tracks/all/10/explicit.json";
@@ -212,21 +201,23 @@
                 $("#result").val(resData);
             });
         }
+
         var currRSSData = null;
         function changeRSSSrc() {
             var feedURL = prompt("Enter your RSS feed URL:");
             var url = "./getFeedData?url=" + feedURL;
             loadRSS(url);
         }
+
         function feedSelected(n) {
             ac.show();
             var feedURL = currRSSFeedList[n].url;
             var url = "./getFeedData?url=" + feedURL;
             loadRSS(url);
-            //      $("#allRSSFeeds").addClass("hiddeninSmall");
             $("#theImageList .item").removeClass("active");
             $("#theImageList .item:nth-of-type(" + (n + 1) + ")").addClass("active");
         }
+
         function addImgSrc() {
             var feedURL = prompt("Enter new image URL:");
             var url = "./addImg?url=" + feedURL;
@@ -237,9 +228,10 @@
                 start();
             })
         }
+
         var currSelection;
+
         function imgSelected(n) {
-            goBackToList();
             currSelection = n;
             var currName = currRSSFeedList[n].name;
             var id = currRSSFeedList[n].id;
@@ -248,19 +240,15 @@
             setFilters(n)
             // Instead of the above resetFilters(), init the filters stored by user and apply it!
             document.getElementById("theDetails").style.backgroundImage = "url(" + imgURL + ")";
-            $("#allImagesWrapper").addClass("hiddeninSmall");
-            $("#theInspector").addClass("hiddeninSmall");
+
             $("#theImageList .item").removeClass("active");
             $("#theImageList .item:nth-of-type(" + (n + 1) + ")").addClass("active");
+            $("#allImagesWrapper").addClass("hiddeninsmall");
+            $("#theInspector").addClass("hiddeninsmall");
         }
+
         function start() {
             ac.show();
-            //      $("#theInspector").addClass("hiddeninall");
-            //      $("#theDetails").addClass("hiddeninall");
-            //    $("#rssBox").addClass("hiddeninall");
-
-            //      not useful
-            //      $("#allImagesWrapper").removeClass("hiddeninall")
             var url = "./getAllImgs";
             loadFile(url, function (resData) {
                 console.log(resData);
@@ -284,6 +272,7 @@
                 ac.hide();
             });
         }
+
         function loadRSS(url) {
             console.log(url);
             loadFile(url, function (resData) {
@@ -298,30 +287,29 @@
                     markup += "<button onclick='itemSelected(" + i + ")'><img src='" + thumb + "'><h1>" + name + "</h1><h2>" + artist + "<h2></button>";
                 }
                 $("#theList").html(markup);
-                //not needed at all
-                //        $("#rssBox").removeClass("hiddeninall");
-                //        $("#theDetails").removeClass("hiddeninall");
                 ac.hide();
             });
         }
         function itemSelected(n) {
-            $("#theInspector").addClass("hiddeninSmall");
             $("#theList button").removeClass("active");
             $("#theList button:nth-of-type(" + (n + 1) + ")").addClass("active");
+            $("#theInspector").addClass("hiddeninsmall");
             var data = currRSSData[n];
             var markup = "";
             var thumbnail = data.artworkUrl100 || "";
             var name = data.name || "";
             var link = data.url || "";
             console.log(data);
+
             markup += "<img src='" + thumbnail + "'>";
             markup += "<a target='_blank' href='" + link + "'><h1>" + name + "</h1></a>";
-            markup = "<button onclick='goBackToList()' class='hiddeninBig'> Back </button>" + markup;
+
 
             $("#theDetails").html(markup);
-            $("#theDetails").removeClass("hiddeninall");
+            $("theDetails").removeClass("hiddeninall");
             //document.getElementById("theDetails").innerHTML = markup;
         }
+
         function setFilters() {
             var n = currSelection;
             var obj = currRSSFeedList[n];
@@ -336,6 +324,7 @@
             document.getElementById("sepia").value = obj.sepia || "0";
             applyFilter();
         }
+
         function resetFilters() {
             document.getElementById("blur").value = "0";
             document.getElementById("brightness").value = "100";
@@ -348,6 +337,7 @@
             document.getElementById("sepia").value = "0";
             applyFilter();
         }
+
         function applyFilter() {
             var n = currSelection;
             var blur = document.getElementById("blur").value + "px";
@@ -359,6 +349,7 @@
             var opacity = document.getElementById("opacity").value + "%";
             var saturate = document.getElementById("saturate").value + "%";
             var sepia = document.getElementById("sepia").value + "%";
+
             var filter = " blur(" + blur + ") ";
             filter += " brightness(" + brightness + ") ";
             filter += " contrast(" + contrast + ") ";
@@ -368,6 +359,7 @@
             filter += " opacity(" + opacity + ") ";
             filter += " saturate(" + saturate + ") ";
             filter += " sepia(" + sepia + ") ";
+
             document.getElementById("theDetails").style.filter = filter;
 
             currRSSFeedList[n].blur = parseInt(blur);
@@ -390,30 +382,33 @@
                 + "&opacity=" + parseInt(opacity)
                 + "&saturate=" + parseInt(saturate)
                 + "&sepia=" + parseInt(sepia);
+
             loadFile(url, function (resData) {
             });
         }
-    </script>
 
+
+        function back() {
+            $("#theDetails").addClass("hiddeninsmall");
+            $("#allImagesWrapper").removeClass("hiddeninsmall");
+            $("#theInspector").addClass("hiddeninsmall")
+
+        }
+
+        function list() {
+            $("#theDetails").removeClass("hiddeninsmall");
+            $("#theInspector").addClass("hiddeninsmall");
+        }
+    </script>
 </head>
 <body onload='start()'>
     <div id='allImagesWrapper'>
         <h1> Image Lib</h1>
-        <!--    <button onclick='goBackToMain()' class='hiddeninBig'> Back </button>-->
-        <!--    <div id='theImageList'></div>-->
         <button id='editButton' onclick='addImgSrc()'> Add</button>
         <div id='theImageList'></div>
     </div>
-    <!--
-    <div id='rssBox'>
-      <button onclick='goBackToMain()' class='hiddeninBig'> Back </button>
-        <div id='theList'></div>
-    </div>
-    -->
-    <div id='theDetails'>
-        <button onclick='goBackToMain()' class='hiddeninBig'> Back </button>
-        <div id='theImageList'></div>
-    </div>
+    <div id='theDetails'></div>
+    <button onclick='back()' class='hiddeninall'></button>
     <div id='theInspector'>
         <br>
         <label for='blur'> Blur </label>
@@ -444,6 +439,5 @@
         <input onchange='applyFilter()' id='sepia' value="0" type="range" min="0" max="100">
         <button onclick='resetFilters()'> Reset </button>
     </div>
-
 </body>
 </html>
