@@ -7,22 +7,25 @@
     <link rel="stylesheet" type="text/css" href="ac.css">
     <style>
         @media (max-width:550px) {
-            #allImagesWrapper, #theInspector {
-                width: 100%;
-            }
-
-            .hiddeninSmall {
-                display: none;
-            }
-
-            .hiddeninBig {
-                display: block;
-                margin: 10px;
-            }
-
             #theDetails {
-                width: 100%;
+                margin-left: 0px;
+                min-width: 100%;
+                min-height: 33%;
+                width: calc(100% - 500px);
+                text-align: center;
+                background-repeat: no-repeat;
+                background-position: 50%;
+                background-size: contain;
             }
+
+            .hiddeninall {
+                display: block
+            }
+
+            .hiddeninsmall {
+                display: none
+            }
+        }
 
         @media (min-width: 550px) {
             #theDetails {
