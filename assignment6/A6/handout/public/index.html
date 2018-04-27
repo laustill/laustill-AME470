@@ -20,6 +20,8 @@
 
             .hiddeninall {
                 display: block;
+               
+
             }
 
             .hiddeninsmall {
@@ -39,6 +41,10 @@
 
             .hiddeninsmall {
                 display: block;
+                height: 50px;
+                width: 50px;
+                color: aqua;
+                margin-left: 20px;
             }
         }
 
@@ -245,6 +251,7 @@ var currSelection;
       $("#theImageList .item:nth-of-type(" + (n + 1) + ")").addClass("active");
       $("#allImagesWrapper").addClass("hiddeninsmall");
         $("#theInspector").addClass("hiddeninsmall");
+        list();
   }
 
   function start()
