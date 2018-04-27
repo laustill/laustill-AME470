@@ -19,11 +19,11 @@
             }
 
             .hiddeninall {
-                display: block
+                display: block;
             }
 
             .hiddeninsmall {
-                display: none
+                display: none;
             }
         }
 
@@ -244,7 +244,8 @@ var currSelection;
     $("#theImageList .item").removeClass("active");
       $("#theImageList .item:nth-of-type(" + (n + 1) + ")").addClass("active");
       $("#allImagesWrapper").addClass("hiddeninsmall");
-      $("#theInspector").addClass("hiddeninsmall");
+        $("#theInspector").addClass("hiddeninsmall");
+        $("theDetails").removeClass("hiddeninsmall");
   }
 
   function start()
