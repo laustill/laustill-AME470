@@ -7,27 +7,58 @@
   <link rel="stylesheet" type="text/css" href="ac.css">
   <style>
 
-@media (max-width:550px){
-#allImagesWrapper{
-	display:none
-    }
-    #theDetails{
-	    margin-left: 0px;
-	    min-width: 100%;
-	    min-height: 33%;
-	    width: calc(100% - 500px);
-	    text-align: center;
-	    background-repeat: no-repeat;
-	    background-position: 50%;
-	    background-size: contain;
-    }
-}
-@media (min-width: 550px){
-	#theDetails{
-	width: 100%;
-	margin-left: 250px;
-}
+      @media (max-width:550px) {
+          #theDetails {
+              margin-left: 0px;
+              min-width: 100%;
+              min-height: 33%;
+              width: calc(100% - 500px);
+              text-align: center;
+              background-repeat: no-repeat;
+              background-position: 50%;
+              background-size: contain;
+          }
 
+          #theInspector {
+              position: relative;
+          }
+
+          .hiddeninall {
+              display: block;
+              height: 50px;
+              width: 50px;
+              color: red;
+              margin-left: 20px;
+          }
+
+          .hiddeninsmall {
+              display: none;
+          }
+      }
+
+      @media (min-width: 550px) {
+          #theDetails {
+              width: 100%;
+              min-height: 100%;
+              margin-left: 250px;
+          }
+
+          #theInspector {
+              position: absolute
+          }
+
+          .hiddeninall {
+              display: none;
+          }
+
+          .hiddeninsmall {
+              display: block;
+              height: 50px;
+              width: 50px;
+              color: aqua;
+              margin-left: 20px;
+          }
+      }
 
 
 #theInspector input[type=range]{
