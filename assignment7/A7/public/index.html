@@ -253,8 +253,11 @@ var currSelection;
     // Instead of the above resetFilters(), init the filters stored by user and apply it!
     document.getElementById("theDetails").style.backgroundImage = "url(" + imgURL + ")";
    
-    $("#theImageList .item").removeClass("active");
-    $("#theImageList .item:nth-of-type(" + (n+1) + ")").addClass("active");
+      $("#theImageList .item").removeClass("active");
+      $("#theImageList .item:nth-of-type(" + (n + 1) + ")").addClass("active");
+      $("#allImagesWrapper").addClass("hiddeninsmall");
+      $("#theInspector").addClass("hiddeninsmall");
+      list();
   }
 
   function start()
@@ -316,7 +319,9 @@ var currSelection;
     markup += "<a target='_blank' href='" + link + "'><h1>" + name + "</h1></a>";
 
 
-    $("#theDetails").html(markup);
+      $("#theDetails").html(markup);
+      $("theDetails").removeClass("hiddeninall");
+
     //document.getElementById("theDetails").innerHTML = markup;
   }
 
@@ -399,6 +404,18 @@ var currSelection;
         loadFile(url, function(resData){
         });
   }
+      function back() {
+          $("#theDetails").addClass("hiddeninsmall");
+          $("#allImagesWrapper").removeClass("hiddeninsmall");
+          $("#theInspector").addClass("hiddeninsmall")
+
+      }
+
+      function list() {
+          $("#theDetails").removeClass("hiddeninsmall");
+          $("theDetails").removeClass("hiddeninall");
+          $("#theInspector").removeClass("hiddeninsmall");
+      }
   </script>
 
 </head>
@@ -410,6 +427,8 @@ var currSelection;
   <div id='theImageList'></div>
 </div>
 <div id='theDetails'></div>
+    <button onclick='back()' class='hiddeninall'>Images</button>
+
 <div id='theInspector'>
   <br>
   <label for='blur'> Blur </label>
